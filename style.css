@@ -1,0 +1,33 @@
+body {
+    background-color: #a1eafb;
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+table {
+    margin: auto;
+    background-color: antiquewhite;
+}
+button {
+    margin: 5px;
+}
+.back{
+    background-color: #fdfdfd;
+    width: 30%;
+    margin: auto;
+}
+.c{
+    color: #815a2b;
+}
+.r{
+    color: silver;
+}
+.sr{
+    color: gold;
+}
+.ssr {
+    color: #FF8C00;
+    background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
