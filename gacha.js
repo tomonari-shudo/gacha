@@ -8,7 +8,6 @@ const logTable = document.getElementById('logTable');
 const showButton = document.getElementById('show');
 const closeButton = document.getElementById('close');
 
-
 var count;
 var total;
 var table = [];
@@ -16,45 +15,31 @@ const config = getConfig();
 
 //「1回引く」を押した時の処理
 oneButton.onclick = () => {
-    /*
-    count=0;
-    total=0;
-    table=[];
-    dialog.close();
-    showButton.className='hidden';
-    clearDisplay();
-    standBy(1);
-    */
     format()
-    .then(()=>{
-        return standBy(1);
-    });
+        .then(()=>{
+            return standBy(1);
+        });
 }
 
 //「10回引く」を押した時の処理
 tenButton.onclick = () => {
-    /*count=0;
-    total=0;
-    table=[];
-    dialog.close();
-    showButton.className='hidden';
-    clearDisplay();
-    standBy(10);*/
     format()
         .then(()=>{
             return standBy(10);
         });
 }
 
+//「詳細を見る」を押した時の処理
 showButton.onclick = () => {
     dialog.showModal();
 }
 
+//「詳細を閉じる」を押した時の処理
 closeButton.onclick = () => {
     dialog.close();
 }
 
-//ガチャの中身
+//ガチャの中身と確率
 function getConfig(){
     return [
         {id: 100000, val: 3},
@@ -64,6 +49,9 @@ function getConfig(){
     ];
 }
 
+/**
+ * 初期化用プロミス
+ */
 function format(){
     return new Promise((resolve) => {
         count=0;
@@ -123,12 +111,12 @@ function gachaRun(num){
     switch (totalProb) {
         case 3:
             img.src = "tiger.png";
-            img.setAttribute('class', 'purun');
+            img.className = 'purun';
             paragraph.setAttribute('class', 'ssr');
             break;
         case 20:
             img.src = "moreCoin.png";
-            img.setAttribute('class', 'poyon');
+            img.className = 'poyon';
             paragraph.setAttribute('class', 'sr');
             break;
         case 50:
@@ -199,11 +187,7 @@ function gachaResult(result, num, paragraph){
  */
 function createTable(){
     logTable.innerText="";
-    /*
-    while(logTable.firstChild){
-        logTable.removeChild(logTable.firstChild);
-    }
-    */
+
     for(let i=0;i<table.length;i++){
         const tr = document.createElement('tr');
         const td1 = document.createElement('td');
