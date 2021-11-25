@@ -57,38 +57,21 @@ function gachaRun(){
 
     //ガチャ演出の設定
     const paragraph = document.createElement('p');
-    //const img = document.createElement('img');
-    //var rareEffect = true;
     switch (totalProb) {
         case 3:
-            //img.src = "./img/ssr.png";
-            //img.className = 'purun';
             paragraph.setAttribute('class', 'ssr');
             break;
         case 20:
-            //img.src = "./img/sr.png";
-            //img.className = 'poyon';
             paragraph.setAttribute('class', 'sr');
             break;
         case 50:
-            //rareEffect=false;
             paragraph.setAttribute('class', 'r');
             break;
         case 100:
-            //rareEffect=false;
             paragraph.setAttribute('class', 'c');
             break;
     }
-    /*img.addEventListener('animationend', ()=>{
-        gachaResult(result, paragraph);
-    });*/
-
-    //レア演出分岐
-    //if(rareEffect){
-        //resultDivided.appendChild(img);
-    //}else{
-        gachaResult(result, paragraph);
-    //}
+    gachaResult(result, paragraph);
 
 }
 
