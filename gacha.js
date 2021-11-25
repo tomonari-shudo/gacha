@@ -123,12 +123,12 @@ function gachaRun(num){
     var rareEffect = true;
     switch (totalProb) {
         case 3:
-            img.src = "tiger.png";
+            img.src = "ssr.png";
             img.className = 'purun';
             paragraph.setAttribute('class', 'ssr');
             break;
         case 20:
-            img.src = "moreCoin.png";
+            img.src = "sr.png";
             img.className = 'poyon';
             paragraph.setAttribute('class', 'sr');
             break;
