@@ -2,9 +2,6 @@ body {
     text-align: center;
     background-color: #f3f3f3;
 }
-button{
-    margin: 20px;
-}
 .c{
     font-size: 45px;
     color: #815a2b;
@@ -25,6 +22,22 @@ button{
 .result{
     font-size: 45px;
 }
+
+.box {
+    /* 子要素のタイトルを aboslute 配置するため必要 */
+    position: relative;
+}
+.box .box_imageLeft {
+    width: 20%;
+    position: absolute;
+    left: 0;
+}
+.box .box_imageRight {
+    width: 20%;
+    position: absolute;
+    right: 0;
+}
+
 .hidden{
     display: none;
 }
@@ -77,19 +90,4 @@ button{
     60%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
     70%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
     100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
-}
-
-.box {
-    /* 子要素のタイトルを aboslute 配置するため必要 */
-    position: relative;
-}
-.box .box_imageLeft {
-    width: 20%;
-    position: absolute;
-    left: 0;
-}
-.box .box_imageRight {
-    width: 20%;
-    position: absolute;
-    right: 0;
 }

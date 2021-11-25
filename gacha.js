@@ -1,5 +1,5 @@
 'use strict';
-/**ここから */
+
 const price = document.getElementById('price');
 const resultDivided = document.getElementById('result-area');
 const dialog = document.querySelector('dialog');
@@ -14,11 +14,6 @@ const config = getConfig();
 
 //画像をクリックした時の処理
 startImg.onclick = () => {
-    /*format()
-        .then(()=>{
-            //return standBy();
-            return gachaRun();
-        });*/
     gachaRun();
 }
 
@@ -39,33 +34,7 @@ function getConfig(){
 }
 
 /**
- * 初期化用プロミス
- */
-/*function format(){
-    return new Promise((resolve) => {
-        //count=0;
-        //total=0;
-        //table=[];
-        //dialog.close();
-        //showButton.className='hidden';
-        clearDisplay();
-        resolve();
-    });
-}*/
-
-/**
- * ガチャ待機画面を表示する関数
- * @param {int} num ガチャを引く回数
- */
- /*function standBy(){
-
-    clearDisplay();
-    gachaRun();
-}*/
-
-/**
  * ガチャの抽選
- * @param {int} num ガチャの実行回数
  */
 function gachaRun(){
     //画面リセット
@@ -126,7 +95,6 @@ function gachaRun(){
 /**
  * ガチャの中身を画面に表示する関数
  * @param {object} result 
- * @param {int} num 
  * @param {htmlElement} paragraph 
  */
 function gachaResult(result, paragraph){
@@ -136,36 +104,19 @@ function gachaResult(result, paragraph){
 
     resultDivided.appendChild(paragraph);
     count++;
-    //console.log(count + ' : ' + num + ' : ' + result.val);
 
-    //繰り返し処理
-    //if(count<num){
-        //setTimeout(standBy, 1000, num);
-    //}else{
-        setTimeout(()=>{
-        
-            clearDisplay();
+    setTimeout(()=>{
+    
+        clearDisplay();
 
-            /*const resultHeader = document.createElement('h3');
-            resultHeader.innerText = 'ガチャ結果';
-            resultDivided.appendChild(resultHeader);
+        price.innerText = `🎊総額${total.toLocaleString()}円🎊`;
 
-            const resultParagraph = document.createElement('p');
-            resultParagraph.innerText = `🎊総額${total.toLocaleString()}円🎊`;
-            resultParagraph.className = 'result';
-            resultDivided.appendChild(resultParagraph);*/
+        createTable();
 
-            price.innerText = `🎊総額${total.toLocaleString()}円🎊`;
+        dialog.showModal();
 
-            createTable();
-            //console.log(table);
-            //showButton.className="";
+    },1000);
 
-            dialog.showModal();
-
-        },1000);
-
-    //}
 }
 
 /**
@@ -191,8 +142,6 @@ function createTable(){
  */
 function clearDisplay(){
     for(let i=0;i<resultDivided.children.length;i++){
-        //if(resultDivided.children[i].className!=='box_imageLeft' && resultDivided.children[i].className!=='box_imageRight'){
             resultDivided.children[i].remove();
-        //}
     }
 }
