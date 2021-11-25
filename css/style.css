@@ -6,19 +6,6 @@ body {
     font-size: 45px;
     color: #815a2b;
 }
-/*.r{
-    font-size: 45px;
-    color: silver;
-}
-.sr{
-    font-size: 45px;
-    margin: auto;
-    color: gold;
-}
-.ssr {
-    font-size: 45px;
-    color: red;
-}*/
 .result{
     font-size: 45px;
 }
@@ -37,11 +24,3 @@ body {
     position: absolute;
     right: 0;
 }
-
-/*.hidden{
-    display: none;
-}*/
-/*.korokoro {
-    width: 20%;
-    height: 20%;
-}*/
