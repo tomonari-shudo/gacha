@@ -6,7 +6,7 @@ body {
     font-size: 45px;
     color: #815a2b;
 }
-.r{
+/*.r{
     font-size: 45px;
     color: silver;
 }
@@ -18,7 +18,7 @@ body {
 .ssr {
     font-size: 45px;
     color: red;
-}
+}*/
 .result{
     font-size: 45px;
 }
@@ -38,10 +38,10 @@ body {
     right: 0;
 }
 
-.hidden{
+/*.hidden{
     display: none;
-}
-.korokoro {
+}*/
+/*.korokoro {
     width: 20%;
     height: 20%;
-}
+}*/
