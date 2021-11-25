@@ -1,15 +1,11 @@
 'use strict';
-
-//const oneButton = document.getElementById('oneGacha');
-//const tenButton = document.getElementById('tenGacha');
+/**ここから */
+const price = document.getElementById('price');
 const resultDivided = document.getElementById('result-area');
 const dialog = document.querySelector('dialog');
 const logTable = document.getElementById('logTable');
-const showButton = document.getElementById('show');
 const closeButton = document.getElementById('close');
 const startImg = document.getElementById('start-img');
-//const div = document.getElementById('div');
-const price = document.getElementById('price');
 
 var count=0;
 var total=0;
@@ -18,32 +14,13 @@ const config = getConfig();
 
 //画像をクリックした時の処理
 startImg.onclick = () => {
-    format()
+    /*format()
         .then(()=>{
-            return standBy(1);
-        });
+            //return standBy();
+            return gachaRun();
+        });*/
+    gachaRun();
 }
-
-//「1回引く」を押した時の処理
-/*oneButton.onclick = () => {
-    format()
-        .then(()=>{
-            return standBy(1);
-        });
-}*/
-
-//「10回引く」を押した時の処理
-/*tenButton.onclick = () => {
-    format()
-        .then(()=>{
-            return standBy(10);
-        });
-}*/
-
-//「詳細を見る」を押した時の処理
-/*showButton.onclick = () => {
-    dialog.showModal();
-}*/
 
 //「詳細を閉じる」を押した時の処理
 closeButton.onclick = () => {
@@ -64,41 +41,33 @@ function getConfig(){
 /**
  * 初期化用プロミス
  */
-function format(){
+/*function format(){
     return new Promise((resolve) => {
         //count=0;
         //total=0;
         //table=[];
-        dialog.close();
+        //dialog.close();
         //showButton.className='hidden';
         clearDisplay();
         resolve();
     });
-}
+}*/
 
 /**
  * ガチャ待機画面を表示する関数
  * @param {int} num ガチャを引く回数
  */
- function standBy(num){
+ /*function standBy(){
 
     clearDisplay();
-    /*const img = document.createElement('img');
-    img.src = "wait.png";
-    img.setAttribute('class', 'korokoro');
-    img.addEventListener('click', () => {
-        clearDisplay()
-        gachaRun(num);
-    });
-    resultDivided.appendChild(img);*/
-    gachaRun(num);
-}
+    gachaRun();
+}*/
 
 /**
  * ガチャの抽選
  * @param {int} num ガチャの実行回数
  */
-function gachaRun(num){
+function gachaRun(){
     //画面リセット
     clearDisplay();
     startImg.classList.add('hidden');
@@ -123,12 +92,12 @@ function gachaRun(num){
     var rareEffect = true;
     switch (totalProb) {
         case 3:
-            img.src = "ssr.png";
+            img.src = "./img/ssr.png";
             img.className = 'purun';
             paragraph.setAttribute('class', 'ssr');
             break;
         case 20:
-            img.src = "sr.png";
+            img.src = "./img/sr.png";
             img.className = 'poyon';
             paragraph.setAttribute('class', 'sr');
             break;
@@ -142,14 +111,14 @@ function gachaRun(num){
             break;
     }
     img.addEventListener('animationend', ()=>{
-        gachaResult(result, num, paragraph);
+        gachaResult(result, paragraph);
     });
 
     //レア演出分岐
     if(rareEffect){
         resultDivided.appendChild(img);
     }else{
-        gachaResult(result, num, paragraph);
+        gachaResult(result, paragraph);
     }
 
 }
@@ -160,19 +129,19 @@ function gachaRun(num){
  * @param {int} num 
  * @param {htmlElement} paragraph 
  */
-function gachaResult(result, num, paragraph){
+function gachaResult(result, paragraph){
     
     clearDisplay();
     paragraph.innerText = result.id.toLocaleString()+'円';
 
     resultDivided.appendChild(paragraph);
     count++;
-    console.log(count + ' : ' + num + ' : ' + result.val);
+    //console.log(count + ' : ' + num + ' : ' + result.val);
 
     //繰り返し処理
-    if(count<num){
-        setTimeout(standBy, 1000, num);
-    }else{
+    //if(count<num){
+        //setTimeout(standBy, 1000, num);
+    //}else{
         setTimeout(()=>{
         
             clearDisplay();
@@ -189,14 +158,14 @@ function gachaResult(result, num, paragraph){
             price.innerText = `🎊総額${total.toLocaleString()}円🎊`;
 
             createTable();
-            console.log(table);
+            //console.log(table);
             //showButton.className="";
 
             dialog.showModal();
 
         },1000);
 
-    }
+    //}
 }
 
 /**
@@ -221,10 +190,9 @@ function createTable(){
  * 結果画面の初期化
  */
 function clearDisplay(){
-    //startImg.className="hidden";
     for(let i=0;i<resultDivided.children.length;i++){
-        if(resultDivided.children[i].className!=='box_imageLeft' && resultDivided.children[i].className!=='box_imageRight'){
+        //if(resultDivided.children[i].className!=='box_imageLeft' && resultDivided.children[i].className!=='box_imageRight'){
             resultDivided.children[i].remove();
-        }
+        //}
     }
 }
