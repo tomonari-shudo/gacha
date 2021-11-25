@@ -72,7 +72,7 @@ function format(){
 
     clearDisplay();
     const img = document.createElement('img');
-    img.src = "pochi.png";
+    img.src = "wait.png";
     img.setAttribute('class', 'korokoro');
     img.addEventListener('click', () => {
         clearDisplay()
