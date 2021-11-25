@@ -1,41 +1,53 @@
 'use strict';
 
-const oneButton = document.getElementById('oneGacha');
-const tenButton = document.getElementById('tenGacha');
+//const oneButton = document.getElementById('oneGacha');
+//const tenButton = document.getElementById('tenGacha');
 const resultDivided = document.getElementById('result-area');
 const dialog = document.querySelector('dialog');
 const logTable = document.getElementById('logTable');
 const showButton = document.getElementById('show');
 const closeButton = document.getElementById('close');
+const startImg = document.getElementById('start-img');
+//const div = document.getElementById('div');
+const price = document.getElementById('price');
 
-var count;
-var total;
+var count=0;
+var total=0;
 var table = [];
 const config = getConfig();
 
-//「1回引く」を押した時の処理
-oneButton.onclick = () => {
+//画像をクリックした時の処理
+startImg.onclick = () => {
     format()
         .then(()=>{
             return standBy(1);
         });
 }
 
+//「1回引く」を押した時の処理
+/*oneButton.onclick = () => {
+    format()
+        .then(()=>{
+            return standBy(1);
+        });
+}*/
+
 //「10回引く」を押した時の処理
-tenButton.onclick = () => {
+/*tenButton.onclick = () => {
     format()
         .then(()=>{
             return standBy(10);
         });
-}
+}*/
 
 //「詳細を見る」を押した時の処理
-showButton.onclick = () => {
+/*showButton.onclick = () => {
     dialog.showModal();
-}
+}*/
 
 //「詳細を閉じる」を押した時の処理
 closeButton.onclick = () => {
+    startImg.classList.remove('hidden');
     dialog.close();
 }
 
@@ -54,11 +66,11 @@ function getConfig(){
  */
 function format(){
     return new Promise((resolve) => {
-        count=0;
-        total=0;
-        table=[];
+        //count=0;
+        //total=0;
+        //table=[];
         dialog.close();
-        showButton.className='hidden';
+        //showButton.className='hidden';
         clearDisplay();
         resolve();
     });
@@ -71,15 +83,15 @@ function format(){
  function standBy(num){
 
     clearDisplay();
-    const img = document.createElement('img');
+    /*const img = document.createElement('img');
     img.src = "wait.png";
     img.setAttribute('class', 'korokoro');
     img.addEventListener('click', () => {
         clearDisplay()
         gachaRun(num);
     });
-    resultDivided.appendChild(img);
-
+    resultDivided.appendChild(img);*/
+    gachaRun(num);
 }
 
 /**
@@ -88,7 +100,8 @@ function format(){
  */
 function gachaRun(num){
     //画面リセット
-    clearDisplay()
+    clearDisplay();
+    startImg.classList.add('hidden');
     //抽選
     const randomNum = Math.floor(Math.random()*100);
     let result = [];
@@ -149,7 +162,7 @@ function gachaRun(num){
  */
 function gachaResult(result, num, paragraph){
     
-    clearDisplay()
+    clearDisplay();
     paragraph.innerText = result.id.toLocaleString()+'円';
 
     resultDivided.appendChild(paragraph);
@@ -164,18 +177,22 @@ function gachaResult(result, num, paragraph){
         
             clearDisplay();
 
-            const resultHeader = document.createElement('h3');
+            /*const resultHeader = document.createElement('h3');
             resultHeader.innerText = 'ガチャ結果';
             resultDivided.appendChild(resultHeader);
 
             const resultParagraph = document.createElement('p');
             resultParagraph.innerText = `🎊総額${total.toLocaleString()}円🎊`;
             resultParagraph.className = 'result';
-            resultDivided.appendChild(resultParagraph);
+            resultDivided.appendChild(resultParagraph);*/
+
+            price.innerText = `🎊総額${total.toLocaleString()}円🎊`;
 
             createTable();
             console.log(table);
-            showButton.className="";
+            //showButton.className="";
+
+            dialog.showModal();
 
         },1000);
 
@@ -204,6 +221,7 @@ function createTable(){
  * 結果画面の初期化
  */
 function clearDisplay(){
+    //startImg.className="hidden";
     for(let i=0;i<resultDivided.children.length;i++){
         if(resultDivided.children[i].className!=='box_imageLeft' && resultDivided.children[i].className!=='box_imageRight'){
             resultDivided.children[i].remove();
