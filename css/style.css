@@ -44,10 +44,10 @@ body {
 .korokoro {
     width: 20%;
     height: 20%;
-    animation: korokoro 2.5s linear 0s infinite;
+    /*animation: korokoro 2.5s linear 0s infinite;*/
     
 }  
-@keyframes korokoro {
+/*@keyframes korokoro {
     0%   { transform: translate(0%, 0%); }
     5%   { transform: translate(10%, 0%) rotate(10deg); }
     25%  { transform: translate(20%, 0%) rotate(20deg); }
@@ -59,9 +59,9 @@ body {
     65%  { transform: translate(-7%, 0%) rotate(-7deg); }
     75%  { transform: translate(0%, 0%) rotate(0deg); }
     100% { transform: translate(0%, 0%) rotate(0deg); }
-}
+}*/
 
-.purun {
+/*.purun {
     width: 20%;
     height: 20%;
     animation: purun 0.8s linear 0s 4;
@@ -90,4 +90,4 @@ body {
     60%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
     70%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
     100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
-}
+}*/
